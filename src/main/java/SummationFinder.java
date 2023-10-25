@@ -22,6 +22,29 @@ public class SummationFinder {
         return count;
     }
 
+    int findNumberBySum(int[] numbers, int expectedSum) {
+        int firstElement = 0;
+        int lastElement = numbers.length - 1;
+        int count = 0;
+
+        while (firstElement < lastElement) {
+            int sum = numbers[firstElement] + numbers[lastElement];
+
+            if (sum == expectedSum) {
+                count++;
+                firstElement++;
+                lastElement--;
+            }
+            else if (sum < expectedSum) {
+                firstElement++;
+            }
+            else {
+                lastElement--;
+            }
+        }
+
+        return count;
+    }
 
 
     private List<Integer> prepareList(int[] numbers) {
@@ -33,6 +56,5 @@ public class SummationFinder {
 
         return numbersList;
     }
-
 
 }
